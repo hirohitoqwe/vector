@@ -1,5 +1,5 @@
 <?php
-
+namespace Jobs;
 class Engineer extends Worker
 {
     private $Income=200;

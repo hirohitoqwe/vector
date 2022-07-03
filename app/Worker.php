@@ -1,5 +1,5 @@
 <?php
-
+namespace  Jobs;
 abstract class Worker
 {
     private $Income;
@@ -12,10 +12,12 @@ abstract class Worker
 
     private $status;
 
-    public function __construct(int $rank)
+    public function __construct(int $rank,string  $status='')
     {
         $this->rank=$rank;
+        $this->statusChangeIncome();
         $this->changeIncome();
+        return $this;
     }
 
     public  function setStatus(string $status)
@@ -54,8 +56,13 @@ abstract class Worker
                 break;
             case 'Руководитель':
                 $this->Income = $this->Income * 2;
-            default:
-                throw new Exception('Undefined rank :(');
+                break;
+        }
+    }
+
+    private  function statusChangeIncome(){
+        if ($this->status=='рук'){
+            $this->Income*=1.5;
         }
     }
 

@@ -1,0 +1,20 @@
+{
+  "name": "vendor_name/vector",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "baldu",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\" : "app/",
+      "Jobs\\": "app/"
+    }
+  }
+}

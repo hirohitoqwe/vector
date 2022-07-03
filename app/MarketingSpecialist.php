@@ -1,5 +1,5 @@
 <?php
-
+namespace Jobs;
 class MarketingSpecialist extends Worker
 {
     private $Income=400;
