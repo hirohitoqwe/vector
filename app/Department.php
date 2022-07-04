@@ -4,7 +4,13 @@ class Department//класс департамента
 {
     public $structure;//состав рабочих
 
+    public $name;
+
     private $coffee=10;//10 тугриков стоит один литр кофе ДОПУСТИМ
+
+    public function __construct($name){
+        $this->name=$name;
+    }
 
     public  function  getCountWorkers(){//получить число сотрудников
         return count($this->structure);
@@ -13,11 +19,18 @@ class Department//класс департамента
     public  function getExpenses(){//получить расход департамента
         $expenses=0;
         foreach ($this->structure as $arr=>$worker){
-            echo  $worker->getIncome().'<br>';
             $expenses+=$worker->getIncome();
             $expenses+=$worker->getCoffee()*$this->coffee;
         }
         return $expenses;
+    }
+
+    public  function getCoffee(){
+        $coffee=0;
+        foreach ($this->structure as $worker){
+            $coffee+=$worker->getCoffee();
+        }
+        return $coffee;
     }
 
     public  function getPages(){//получить страницы департамента

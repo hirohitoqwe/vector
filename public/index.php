@@ -2,25 +2,18 @@
 require '../vendor/autoload.php';
 use App\Company;
 use App\Department;
+use App\viewClass;
+use App\Generate;
+use App\ModelClass;
 use Jobs\Engineer;
 use Jobs\Manager;
 use Jobs\MarketingSpecialist;
 use Jobs\Analyst;
 
-$company=new Company();
+$view=new \App\viewClass();
 
-$Sales=new Department();
-
-$Procurement=new Department();
-
-$Ads=new Department();
-
-$Logistic=new Department();
-
-$company->generateProcurementDep($Procurement);//ДЕПАРТАМЕНТ ЗАКУПОК
-$company->generateSalesDep($Sales);//ДЕПАРТАМЕНТ ПРОДАЖ
-$company->generateAdsDep($Ads);//ДЕПАРТАМЕНТ РЕКАЛМЫ
-$company->generateLogisticsDep($Logistic);//ДЕПАРТАМЕНТ ЛОГИСТИКИ
-
+$model=new ModelClass();
+echo  '<pre>';
+var_dump($model->getContent());
 
 ?>
