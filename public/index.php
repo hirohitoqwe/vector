@@ -10,7 +10,8 @@ use Jobs\Manager;
 use Jobs\MarketingSpecialist;
 use Jobs\Analyst;
 
-$view=new \App\viewClass();
+
+$view=new viewClass();
 $view->View();
 
 
