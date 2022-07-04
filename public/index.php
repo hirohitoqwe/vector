@@ -7,19 +7,20 @@ use Jobs\Manager;
 use Jobs\MarketingSpecialist;
 use Jobs\Analyst;
 
-$company= new Company();
-
-$Procurement=new Department();
+$company=new Company();
 
 $Sales=new Department();
+
+$Procurement=new Department();
 
 $Ads=new Department();
 
 $Logistic=new Department();
 
-$company->generateProcurementDep($Procurement);
-$company->generateSalesDep($Sales);
-$company->generateAdsDep($Ads);
-$company->generateLogisticsDep($Logistic);
+$company->generateProcurementDep($Procurement);//ДЕПАРТАМЕНТ ЗАКУПОК
+$company->generateSalesDep($Sales);//ДЕПАРТАМЕНТ ПРОДАЖ
+$company->generateAdsDep($Ads);//ДЕПАРТАМЕНТ РЕКАЛМЫ
+$company->generateLogisticsDep($Logistic);//ДЕПАРТАМЕНТ ЛОГИСТИКИ
+
 
 ?>

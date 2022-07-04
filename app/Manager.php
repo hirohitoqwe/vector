@@ -2,10 +2,11 @@
 namespace Jobs;
 class Manager extends Worker
 {
-    private $Income=500;
+    protected $income=500;
 
-    private $coffee=20;
+    protected $coffee=20;
 
-    private $pages=200;
+    protected $pages=200;
+
 
 }

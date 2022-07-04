@@ -2,10 +2,10 @@
 namespace Jobs;
 class Analyst extends Worker
 {
-    private $Income=800;
+    protected $income=800;
 
-    private $coffee=50;
+    protected $coffee=50;
 
-    private $pages=5;
+    protected $pages=5;
 
 }

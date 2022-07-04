@@ -2,21 +2,22 @@
 namespace  Jobs;
 abstract class Worker
 {
-    private $Income;
+    protected $income;
 
-    private  $coffee;
+    protected $coffee;
 
-    private $pages;
+    protected $pages;
 
-    private $rank;
+    protected $rank;
 
-    private $status;
+    protected $status;
 
     public function __construct(int $rank,string  $status='')
     {
         $this->rank=$rank;
-        $this->statusChangeIncome();
+        $this->status=$status;
         $this->changeIncome();
+        $this->statusChangeIncome();
         return $this;
     }
 
@@ -31,13 +32,13 @@ abstract class Worker
 
     public function getIncome()//получить ЗП
     {
-        return $this->Income;
+        return $this->income;
     }
 
 
     public  function getCoffee()//количество выпитого коффе
     {
-        return $this->coffe;
+        return $this->coffee;
     }
 
     public  function getPages()//количество отчетов в страницах?
@@ -45,24 +46,20 @@ abstract class Worker
         return $this->pages;
     }
 
-    private  function changeIncome()//менять зарплату взависимости от ранга
+    protected  function changeIncome()//менять зарплату взависимости от ранга
     {
         switch ($this->rank) {
             case 2:
-                $this->Income = $this->Income * 1.25;
+                $this->income = $this->income * 1.25;
                 break;
             case 3:
-                $this->Income = $this->Income * 1.5;
-                break;
-            case 'Руководитель':
-                $this->Income = $this->Income * 2;
+                $this->income = $this->income * 1.5;
                 break;
         }
     }
-
-    private  function statusChangeIncome(){
+    protected  function statusChangeIncome(){
         if ($this->status=='рук'){
-            $this->Income*=1.5;
+            $this->income*=1.5;
         }
     }
 

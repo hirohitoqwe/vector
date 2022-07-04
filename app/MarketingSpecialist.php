@@ -2,10 +2,10 @@
 namespace Jobs;
 class MarketingSpecialist extends Worker
 {
-    private $Income=400;
+    protected $income=400;
 
-    private $coffee=15;
+    protected $coffee=15;
 
-    private $pages=150;
+    protected $pages=150;
 
 }

@@ -2,10 +2,10 @@
 namespace Jobs;
 class Engineer extends Worker
 {
-    private $Income=200;
+    protected $income=200;
 
-    private $coffee=5;
+    protected $coffee=5;
 
-    private $pages=50;
+    protected $pages=50;
 
 }

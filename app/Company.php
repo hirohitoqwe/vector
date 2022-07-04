@@ -24,7 +24,7 @@ class Company
             $dep->addWorker(new Manager(3));
         }
 
-        for ($i=0;$i<9;$i++){
+        for ($i=0;$i<2;$i++){
             $dep->addWorker(new MarketingSpecialist(1));
         }
 
