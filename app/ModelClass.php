@@ -6,18 +6,23 @@ use App\Department;
 class ModelClass
 {
     private $content=[];
+    private function Generate(){
+         $generator=new Generate();
+         $departments=$generator->generateDepartments();
+         return $departments;
+     }
     public function setContent(){
-        $generator=new Generate();
-        $departments=$generator->generateDepartments();
+        $departments=$this->Generate();
         foreach ($departments as $department){
             $this->content[]=[
                 'name'=>$department->name,
-                'income'=>round($department->getExpenses()),
-                'workers'=>$department->getCountWorkers(),
-                'coffee'=>$department->getCoffee(),
-                'pages'=>round($department->getPages()),
-                'mp'=>round($department->getMiddleExpOn1Page())
+                'income'=>(round($department->getExpenses())),
+                'workers'=>($department->getCountWorkers()),
+                'coffee'=>($department->getCoffee()),
+                'pages'=>(round($department->getPages())),
+                'mp'=>(round($department->getMiddleExpOn1Page()))
             ];
+
         }
 
     }
@@ -26,4 +31,5 @@ class ModelClass
         $this->setContent();
         return $this->content;
     }
+
 }

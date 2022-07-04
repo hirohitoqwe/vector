@@ -1,5 +1,6 @@
 <?php
 namespace App;
+use App\Generate;
 use Jobs\Analyst;
 use Jobs\Engineer;
 use Jobs\Manager;
@@ -8,7 +9,7 @@ use Jobs\MarketingSpecialist;
 class Company
 {
 
-    public  $structure=array();
+    public  $structure=[];
     //методы для генерации департаментов с рабочими
     public  function  generateProcurementDep(Department $dep)
     {
@@ -30,6 +31,7 @@ class Company
 
         $ruk=new Manager(2,'рук');
         $dep->addWorker($ruk);
+        $this->structure[]=$dep;
     }//закупки
 
     public  function generateSalesDep(Department $dep)//продаж
@@ -52,6 +54,9 @@ class Company
 
         $ruk=new MarketingSpecialist(2,'рук');
         $dep->addWorker($ruk);
+
+        $this->structure[]=$dep;
+
     }
 
     public  function  generateAdsDep(Department $dep)//рекламы
@@ -73,7 +78,11 @@ class Company
         }
 
         $ruk=new MarketingSpecialist(3,'рук');
+
         $dep->addWorker($ruk);
+
+        $this->structure[]=$dep;
+
     }
 
     public  function  generateLogisticsDep(Department $dep)//Логистики
@@ -92,6 +101,8 @@ class Company
 
         $ruk=new Manager(2,'рук');
         $dep->addWorker($ruk);
+
+        $this->structure[]=$dep;
 
     }
 

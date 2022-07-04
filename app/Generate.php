@@ -5,6 +5,7 @@ namespace App;
 class Generate
 {
     private  $department=[];
+    private $company;
 
     public function  generateDepartments(){
         $company=new Company();
@@ -22,8 +23,12 @@ class Generate
         $company->generateAdsDep($Ads);//ДЕПАРТАМЕНТ РЕКАЛМЫ
         $company->generateLogisticsDep($Logistic);//ДЕПАРТАМЕНТ ЛОГИСТИКИ
         array_push($this->department,$Sales,$Procurement,$Ads,$Logistic);
-
+        $this->company=$company;
         return $this->department;
+    }
+
+    public function getCompany(){
+        return $this->company;
     }
 
 }

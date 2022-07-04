@@ -11,9 +11,7 @@ use Jobs\MarketingSpecialist;
 use Jobs\Analyst;
 
 $view=new \App\viewClass();
+$view->View();
 
-$model=new ModelClass();
-echo  '<pre>';
-var_dump($model->getContent());
 
 ?>
