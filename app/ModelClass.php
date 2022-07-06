@@ -3,15 +3,20 @@
 namespace App;
 use App\Generate;
 use App\Department;
+use Crisis\FirstMethod;
 class ModelClass
 {
     private $content=[];
-    private function Generate(){
-         $generator=new Generate();
+    private function Generate(){//генерация параметров и получение модели департаментов
+         $generator=new Company();
          $departments=$generator->generateDepartments();
+         $method=new FirstMethod($departments);
+         $method->unsetEngineers();
+         echo 'DAMP'.'</br>';
+         var_dump($departments);
          return $departments;
-     }
-    public function setContent(){
+    }
+    private function setContent(){//сортировка департаментов по параметрам
         $departments=$this->Generate();
         foreach ($departments as $department){
             $this->content[]=[

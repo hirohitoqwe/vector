@@ -8,102 +8,25 @@ use Jobs\MarketingSpecialist;
 
 class Company
 {
+    private $company=[];
 
-    public  $structure=[];
-    //методы для генерации департаментов с рабочими
-    public  function  generateProcurementDep(Department $dep)
-    {
-        for ($i=0;$i<9;$i++){
-            $dep->addWorker(new Manager(1));
-        }
+    public function  generateDepartments(){//набор сотрудников в департаменты и сложение их в компанию
+        $generate=new Generate();
 
-        for ($i=0;$i<3;$i++){
-            $dep->addWorker(new Manager(2));
-        }
+        $Sales=new Department('Продажи');
 
-        for ($i=0;$i<2;$i++){
-            $dep->addWorker(new Manager(3));
-        }
+        $Procurement=new Department('Закупки');
 
-        for ($i=0;$i<2;$i++){
-            $dep->addWorker(new MarketingSpecialist(1));
-        }
+        $Ads=new Department('Рекламы');
 
-        $ruk=new Manager(2,'рук');
-        $dep->addWorker($ruk);
-        $this->structure[]=$dep;
-    }//закупки
+        $Logistic=new Department('Логистики');
 
-    public  function generateSalesDep(Department $dep)//продаж
-    {
-        for ($i=0;$i<12;$i++){
-            $dep->addWorker(new Manager(1));
-        }
-
-        for ($i=0;$i<6;$i++){
-            $dep->addWorker(new MarketingSpecialist(1));
-        }
-
-        for ($i=0;$i<3;$i++){
-            $dep->addWorker(new Analyst(1));
-        }
-
-        for ($i=0;$i<2;$i++){
-            $dep->addWorker(new Analyst(2));
-        }
-
-        $ruk=new MarketingSpecialist(2,'рук');
-        $dep->addWorker($ruk);
-
-        $this->structure[]=$dep;
-
-    }
-
-    public  function  generateAdsDep(Department $dep)//рекламы
-    {
-        for ($i=0;$i<15;$i++){
-            $dep->addWorker(new MarketingSpecialist(1));
-        }
-
-        for ($i=0;$i<10;$i++){
-            $dep->addWorker(new MarketingSpecialist(2));
-        }
-
-        for ($i=0;$i<8;$i++){
-            $dep->addWorker(new Manager(3));
-        }
-
-        for ($i=0;$i<2;$i++){
-            $dep->addWorker(new Engineer(1));
-        }
-
-        $ruk=new MarketingSpecialist(3,'рук');
-
-        $dep->addWorker($ruk);
-
-        $this->structure[]=$dep;
-
-    }
-
-    public  function  generateLogisticsDep(Department $dep)//Логистики
-    {
-        for ($i=0;$i<13;$i++){
-            $dep->addWorker(new Manager(1));
-        }
-
-        for ($i=0;$i<5;$i++){
-            $dep->addWorker(new Manager(2));
-        }
-
-        for ($i=0;$i<5;$i++){
-            $dep->addWorker(new Engineer(1));
-        }
-
-        $ruk=new Manager(2,'рук');
-        $dep->addWorker($ruk);
-
-        $this->structure[]=$dep;
-
+        $generate->generateProcurementDep($Procurement);//ДЕПАРТАМЕНТ ЗАКУПОК
+        $generate->generateSalesDep($Sales);//ДЕПАРТАМЕНТ ПРОДАЖ
+        $generate->generateAdsDep($Ads);//ДЕПАРТАМЕНТ РЕКАЛМЫ
+        $generate->generateLogisticsDep($Logistic);//ДЕПАРТАМЕНТ ЛОГИСТИКИ
+        array_push($this->company,$Sales,$Procurement,$Ads,$Logistic);
+        return $this->company;
     }
 
 }

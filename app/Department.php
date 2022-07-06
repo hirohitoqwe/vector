@@ -48,4 +48,24 @@ class Department//класс департамента
         $this->structure[]=$worker;
     }
 
+    public function getDirector(){
+        foreach ($this->structure as $worker){
+            if($worker->status=='рук'){
+                return $worker;
+            }
+        }
+    }
+
+
+    public function getEngineersQuantity(){
+        $count=0;
+        foreach ($this->structure as $worker){
+            if (get_class($worker)=='Jobs\Engineer'){
+                $count++;
+            }
+        }
+        return $count;
+    }
+
+
 }

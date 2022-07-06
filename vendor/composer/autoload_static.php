@@ -11,6 +11,10 @@ class ComposerStaticInit03ec4b005d3a97a2b994b5ae7d110f48
         array (
             'Jobs\\' => 5,
         ),
+        'C' => 
+        array (
+            'Crisis\\' => 7,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -21,6 +25,10 @@ class ComposerStaticInit03ec4b005d3a97a2b994b5ae7d110f48
         'Jobs\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/Jobs',
+        ),
+        'Crisis\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Anti-CrisisMeasures',
         ),
         'App\\' => 
         array (

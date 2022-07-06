@@ -10,7 +10,7 @@ abstract class Worker
 
     protected $rank;
 
-    protected $status;
+    public $status;
 
     public function __construct(int $rank,string  $status='')
     {
@@ -35,6 +35,10 @@ abstract class Worker
         return $this->income;
     }
 
+    public function getRank()//получить ранг
+    {
+        return $this->rank;
+    }
 
     public  function getCoffee()//количество выпитого коффе
     {
@@ -62,5 +66,7 @@ abstract class Worker
             $this->income*=1.5;
         }
     }
+
+
 
 }
