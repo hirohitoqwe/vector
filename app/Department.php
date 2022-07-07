@@ -12,6 +12,22 @@ class Department//класс департамента
         $this->name=$name;
     }
 
+    public function unsetDirector(){
+        foreach ($this->structure as $worker){
+            if($worker->status=='рук'){
+                $worker->status='';
+            }
+        }
+    }
+
+    public function setDirector($director){
+        foreach ($this->structure as $worker){
+            if($worker==$director){
+                $director->status='рук';
+            }
+        }
+    }
+
     public  function  getCountWorkers(){//получить число сотрудников
         return count($this->structure);
     }
@@ -32,6 +48,8 @@ class Department//класс департамента
         }
         return $coffee;
     }
+
+
 
     public  function getPages(){//получить страницы департамента
         $pages=0;

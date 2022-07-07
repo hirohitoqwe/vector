@@ -4,15 +4,18 @@ namespace App;
 use App\Generate;
 use App\Department;
 use Crisis\FirstMethod;
+use Crisis\SecondMethod;
 class ModelClass
 {
     private $content=[];
     private function Generate(){//генерация параметров и получение модели департаментов
          $generator=new Company();
          $departments=$generator->generateDepartments();
-         $method=new FirstMethod($departments);
-         $method->unsetEngineers();
-         echo 'DAMP'.'</br>';
+         /*$secondMethod=new SecondMethod($departments);
+         $secondMethod->changeGuide();
+         $firstMethod=new FirstMethod($departments);
+         $firstMethod->unsetEngineers();*/
+         echo '<pre>';
          var_dump($departments);
          return $departments;
     }
