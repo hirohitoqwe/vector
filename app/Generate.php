@@ -65,7 +65,7 @@ class Generate//генерация департаментов с рабочим�
         }
 
         for ($i=0;$i<8;$i++){
-            $dep->addWorker(new Manager(3));
+            $dep->addWorker(new Manager(1));
         }
 
         for ($i=0;$i<2;$i++){

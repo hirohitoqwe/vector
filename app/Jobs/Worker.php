@@ -27,7 +27,18 @@ abstract class Worker
     }
 
     public function setRank($rank){//установить ранг
-        $this->rank=$rank;
+        if ($this->rank!=$rank){
+            $this->rank=$rank;
+            switch ($rank){
+                case 2:
+                    $this->income*=1.25;
+                    break;
+                case 3:
+                    $this->income*=1.5;
+                    break;
+            }
+        }
+
     }
 
     public function getIncome()//получить ЗП

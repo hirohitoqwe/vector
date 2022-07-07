@@ -1,15 +1,7 @@
 <?php
 
 namespace Crisis;
-use App\Company;
-use App\Department;
-use App\viewClass;
-use App\Generate;
-use App\ModelClass;
-use Jobs\Engineer;
-use Jobs\Manager;
-use Jobs\MarketingSpecialist;
-use Jobs\Analyst;
+
 class FirstMethod
 {
     private $structure;
@@ -24,12 +16,12 @@ class FirstMethod
             $count=ceil ($department->getEngineersQuantity()*0.4);//округление в большую требуется по условию
             $head=$department->getDirector();
             $dismissed=0;
-            foreach ($dep as $item){
+            foreach ($dep as $worker){
                 if ($dismissed==$count){
                     break;
                 }
-                if (get_class($item)=='Jobs\Engineer' and $item->status!='рук'){
-                    unset($dep[array_search($item,$dep)]);
+                if (get_class($worker)=='Jobs\Engineer' and $worker->status!='рук'){
+                    unset($dep[array_search($worker,$dep)]);
                     $dismissed++;
                 }
             }

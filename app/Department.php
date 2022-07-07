@@ -85,5 +85,14 @@ class Department//класс департамента
         return $count;
     }
 
+    public function getManagerQuantity(){
+        $count=0;
+        foreach ($this->structure as $worker){
+            if (get_class($worker)=='Jobs\Manager' and ($worker->getRank()==1 or $worker->getRank()==2)){
+                $count++;
+            }
+        }
+        return $count;
+    }
 
 }
