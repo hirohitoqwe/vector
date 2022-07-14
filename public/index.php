@@ -1,15 +1,15 @@
 <?php
 require '../vendor/autoload.php';
 
-use App\viewClass;
+use App\View;
 
 
-$view = new viewClass();
+$view = new View();
 $view->View();
 
 
 /*
-$obj=new ModelClass();
+$obj=new Model();
 echo '<pre>';
 
 

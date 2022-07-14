@@ -2,7 +2,7 @@
 
 namespace App;
 
-class viewClass//название и убрать class
+class View//название и убрать class
 {
     private function padRight($string, int $length): string
     {
@@ -18,7 +18,7 @@ class viewClass//название и убрать class
 
     public function View()
     {
-        $model = new ModelClass();
+        $model = new Model();
         $content = $model->getContent();
         $filter = new Filter();
         $all = $filter->FilltArray($content);

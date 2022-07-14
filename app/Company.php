@@ -4,8 +4,8 @@ namespace App;
 
 class Company
 {
-    private $company = [];//employes
-
+    private $departments = [];
+    /*
     public function generateDepartments()
     {//набор сотрудников в департаменты и сложение их в компанию
         $generate = new Generate();
@@ -22,15 +22,19 @@ class Company
         $generate->generateSalesDep($Sales);//ДЕПАРТАМЕНТ ПРОДАЖ
         $generate->generateAdsDep($Ads);//ДЕПАРТАМЕНТ РЕКАЛМЫ
         $generate->generateLogisticsDep($Logistic);//ДЕПАРТАМЕНТ ЛОГИСТИКИ
-        array_push($this->company, $Sales, $Procurement, $Ads, $Logistic);
-        return $this->company;
+        array_push($this->employees, $Sales, $Procurement, $Ads, $Logistic);
+        return $this->employees;
+    }
+    */
+    public function takeDepartments(array $departments)
+    {
+        $this->departments=$departments;
     }
 
-    public function getAllCountWorkers
+    public function getAllCountWorkers()//and other all and delete filter.php
     {
 
     }
 
-    //TODO method in ModelClass create department
-    //TODO create departments in other class and send in company
+    //TODO delete filter and set other methods of company(get all workers,coffee and other)
 }

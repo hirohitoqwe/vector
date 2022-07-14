@@ -11,9 +11,8 @@ abstract class Worker
 
     public function __construct(protected int $rank = 1, public bool $isLeader = false)//по умолчанию работник не глава департамента
     {
-        $this->changeIncome();
+        $this->rankChangeIncome();
         $this->statusChangeIncome();
-        return $this;
     }
 
     public function setIsLeader()
@@ -24,6 +23,15 @@ abstract class Worker
     public function removeLeader()
     {
         $this->isLeader = false;
+    }
+
+    public function isLeader()
+    {
+        if ($this->isLeader) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function setRank(int $rank)
@@ -57,7 +65,7 @@ abstract class Worker
         return $this->coffee;
     }
 
-    public function getPages()//количество отчетов в страницах?
+    public function getPages()//количество отчетов
     {
         return $this->pages;
     }
