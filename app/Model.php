@@ -70,15 +70,17 @@ class Model
     }
 
 
-    private function setAllContent()
+    public function getAllContent()
     {
-        $this->all = [
+        $all = [
             'sum' => (round($this->company->getTotalExpenses())),
             'workers' => ($this->company->getTotalCountWorkers()),
             'coffee' => ($this->company->getTotalExpenditureCoffee()),
             'pages' => (round($this->company->getTotalPages())),
             'mp' => (round($this->company->getTotalAverageExpensesPerPage()))
         ];
+
+        return $all;
 
     }
 
@@ -87,13 +89,13 @@ class Model
         $this->setContent();
         return $this->content;
     }
-
+    /*
     public function getAllContent()
     {
         $this->setAllContent();
         return $this->all;
     }
-
+*/
     public function getCompany()
     {
         return $this->company;

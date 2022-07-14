@@ -57,6 +57,8 @@ class Company
         foreach ($this->departments as $department){
             $expenditureCoffee+=$department->getCoffee();
         }
+
+        return $expenditureCoffee;
     }
 
     public function getTotalPages()//and other all and delete filter.php
