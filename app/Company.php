@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Department;
 class Company
 {
     private $departments = [];
@@ -31,10 +31,49 @@ class Company
         $this->departments=$departments;
     }
 
-    public function getAllCountWorkers()//and other all and delete filter.php
+    public function getTotalCountWorkers()//and other all and delete filter.php
     {
-
+        $employees=0;
+        foreach ($this->departments as $department){
+            $employees+=$department->getCountWorkers();
+        }
+        return $employees;
     }
 
-    //TODO delete filter and set other methods of company(get all workers,coffee and other)
+    public function getTotalExpenses()//and other all and delete filter.php
+    {
+        $expenses=0;
+        foreach ($this->departments as $department){
+            $expenses+=$department->getExpenses();
+        }
+        return $expenses;
+    }
+
+
+
+    public function getTotalExpenditureCoffee()//and other all and delete filter.php
+    {
+        $expenditureCoffee=0;
+        foreach ($this->departments as $department){
+            $expenditureCoffee+=$department->getCoffee();
+        }
+    }
+
+    public function getTotalPages()//and other all and delete filter.php
+    {
+        $pages=0;
+        foreach ($this->departments as $department){
+            $pages+=$department->getPages();
+        }
+        return $pages;
+    }
+
+    public function getTotalAverageExpensesPerPage()//and other all and delete filter.php
+    {
+        $averagePages=0;
+        foreach ($this->departments as $department){
+            $averagePages+=round($department->getAverageExpensesPerPage());
+        }
+        return $averagePages;
+    }
 }

@@ -13,6 +13,7 @@ class Model
 {
     private $content = [];
     private $company;
+    private $all;
 
     private function Generate()
     {//генерация параметров и получение модели департаментов
@@ -69,10 +70,28 @@ class Model
     }
 
 
+    private function setAllContent()
+    {
+        $this->all = [
+            'sum' => (round($this->company->getTotalExpenses())),
+            'workers' => ($this->company->getTotalCountWorkers()),
+            'coffee' => ($this->company->getTotalExpenditureCoffee()),
+            'pages' => (round($this->company->getTotalPages())),
+            'mp' => (round($this->company->getTotalAverageExpensesPerPage()))
+        ];
+
+    }
+
     public function getContent()
     {
         $this->setContent();
         return $this->content;
+    }
+
+    public function getAllContent()
+    {
+        $this->setAllContent();
+        return $this->all;
     }
 
     public function getCompany()

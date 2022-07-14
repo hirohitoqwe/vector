@@ -1,7 +1,7 @@
 <?php
 
 namespace Crisis;
-
+use Jobs\Manager;
 class ThirdMethod
 {
 
@@ -19,7 +19,7 @@ class ThirdMethod
                 if ($count==$upper){
                     break;
                 }
-                if (get_class($worker)=='Jobs\Manager' and $rank<3){
+                if (($worker instanceof Manager) and $rank<3){
                     $worker->setRank(++$rank);
                     $upper++;
                 }
