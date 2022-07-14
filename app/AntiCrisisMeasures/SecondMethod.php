@@ -4,15 +4,12 @@ namespace Crisis;
 
 class SecondMethod
 {
-    private $structure;
 
-    public function __construct(array $structure){
-        $this->structure=$structure;
+    public function __construct(private array $structure){
     }
 
-    public function changeGuide()
+    public function changeGuide()//сменяемость власти происходит в данном моменте
     {
-        echo '<pre>';
         foreach ($this->structure as $department){
             $head=$department->getDirector();
             if (get_class($head)!='Jobs\Analyst'){

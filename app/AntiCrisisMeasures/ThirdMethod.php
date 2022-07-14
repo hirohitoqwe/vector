@@ -4,13 +4,11 @@ namespace Crisis;
 
 class ThirdMethod
 {
-    private $structure;
 
-    public function __construct(array $structure){
-        $this->structure=$structure;
+    public function __construct( private array $structure){
     }
 
-    public function upManager(){//удаляем инженеров из нашкй компании
+    public function upManager(){//апаем менеджеров
         foreach ($this->structure as $department){
             echo 'RASHODY1'.$department->getExpenses().'</br>';
             $dep=$department->structure;

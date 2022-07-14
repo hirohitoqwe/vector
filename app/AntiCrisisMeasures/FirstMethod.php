@@ -4,9 +4,7 @@ namespace Crisis;
 
 class FirstMethod
 {
-    private $structure;
-
-    public function __construct(array $structure){
+    public function __construct(private array $structure){
         $this->structure=$structure;
     }
 
@@ -20,7 +18,7 @@ class FirstMethod
                 if ($dismissed==$count){
                     break;
                 }
-                if (get_class($worker)=='Jobs\Engineer' and $worker->status!='рук'){
+                if (get_class($worker)=='Jobs\Engineer' and $worker->isLeader!='рук'){
                     unset($dep[array_search($worker,$dep)]);
                     $dismissed++;
                 }

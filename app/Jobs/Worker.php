@@ -1,5 +1,6 @@
 <?php
-namespace  Jobs;
+
+namespace Jobs;
 abstract class Worker
 {
     protected $income;
@@ -8,33 +9,33 @@ abstract class Worker
 
     protected $pages;
 
-    protected $rank;
-
-    public $status;
-
-    public function __construct(int $rank,string  $status='')
+    public function __construct(protected int $rank = 1, public bool $isLeader = false)//по умолчанию работник не глава департамента
     {
-        $this->rank=$rank;
-        $this->status=$status;
         $this->changeIncome();
         $this->statusChangeIncome();
         return $this;
     }
 
-    public  function setStatus(string $status)
+    public function setIsLeader()
     {
-        $this->status=$status;
+        $this->isLeader = true;
     }
 
-    public function setRank($rank){//установить ранг
-        if ($this->rank!=$rank){
-            $this->rank=$rank;
-            switch ($rank){
+    public function removeLeader()
+    {
+        $this->isLeader = false;
+    }
+
+    public function setRank(int $rank)
+    {//установить ранг
+        if ($this->rank != $rank) {
+            $this->rank = $rank;
+            switch ($rank) {
                 case 2:
-                    $this->income*=1.25;
+                    $this->income *= 1.25;
                     break;
                 case 3:
-                    $this->income*=1.5;
+                    $this->income *= 1.5;
                     break;
             }
         }
@@ -51,17 +52,17 @@ abstract class Worker
         return $this->rank;
     }
 
-    public  function getCoffee()//количество выпитого коффе
+    public function getCoffee()//количество выпитого коффе
     {
         return $this->coffee;
     }
 
-    public  function getPages()//количество отчетов в страницах?
+    public function getPages()//количество отчетов в страницах?
     {
         return $this->pages;
     }
 
-    protected  function changeIncome()//менять зарплату взависимости от ранга
+    protected function rankChangeIncome()//менять зарплату взависимости от ранга
     {
         switch ($this->rank) {
             case 2:
@@ -72,12 +73,13 @@ abstract class Worker
                 break;
         }
     }
-    protected  function statusChangeIncome(){
-        if ($this->status=='рук'){
-            $this->income*=1.5;
+
+    protected function statusChangeIncome()
+    {
+        if ($this->isLeader) {
+            $this->income *= 1.5;
         }
     }
-
 
 
 }

@@ -1,94 +1,107 @@
 <?php
+
 namespace App;
+
+use Jobs\Worker;
+
 class Department//класс департамента
 {
     public $structure;//состав рабочих
 
-    public $name;
+    private $coffeePrice = 10;//10 тугриков стоит один литр кофе
 
-    private $coffee=10;//10 тугриков стоит один литр кофе ДОПУСТИМ
+    public function __construct(public string $name)
+    {//department name
 
-    public function __construct($name){
-        $this->name=$name;
     }
 
-    public function unsetDirector(){
-        foreach ($this->structure as $worker){
-            if($worker->status=='рук'){
-                $worker->status='';
+    public function unsetDirector()
+    {
+        foreach ($this->structure as $worker) {
+            if ($worker->status) {//заменить это на метод
+                $worker->status =;//метод снятия лидера
             }
         }
     }
 
-    public function setDirector($director){
-        foreach ($this->structure as $worker){
-            if($worker==$director){
-                $director->status='рук';
+    public function setDirector(Worker $director)
+    {
+        foreach ($this->structure as $worker) {
+            if ($worker == $director) {//заменить методом
+                $director->isLeader = true;//методом
             }
         }
     }
 
-    public  function  getCountWorkers(){//получить число сотрудников
+    public function getCountWorkers()
+    {//получить число сотрудников
         return count($this->structure);
     }
 
-    public  function getExpenses(){//получить расход департамента
-        $expenses=0;
-        foreach ($this->structure as $arr=>$worker){
-            $expenses+=$worker->getIncome();
-            $expenses+=$worker->getCoffee()*$this->coffee;
+    public function getExpenses()
+    {//получить расход департамента
+        $expenses = 0;
+        foreach ($this->structure as $arr => $worker) {//employes-сотрудники
+            $expenses += $worker->getIncome();
+            $expenses += $worker->getCoffee() * $this->coffeePrice;//getcoffeprice method
         }
         return $expenses;
     }
 
-    public  function getCoffee(){
-        $coffee=0;
-        foreach ($this->structure as $worker){
-            $coffee+=$worker->getCoffee();
+    public function getCoffee()
+    {
+        $coffee = 0;
+        foreach ($this->structure as $worker) {
+            $coffee += $worker->getCoffee();
         }
         return $coffee;
     }
 
-
-
-    public  function getPages(){//получить страницы департамента
-        $pages=0;
-        foreach ($this->structure as $worker){
-            $pages+=$worker->getPages();
+    public function getPages()
+    {//получить страницы департамента
+        $pages = 0;
+        foreach ($this->structure as $worker) {
+            $pages += $worker->getPages();
         }
         return $pages;
     }
 
-    public  function getMiddleExpOn1Page(){//средний расход на одну страницу
-        return $this->getExpenses()/$this->getPages();
-    }
-    public function addWorker($worker){
-        $this->structure[]=$worker;
+    public function getAverageExpensesPerPage()
+    {//средний расход на одну страницу
+        return $this->getExpenses() / $this->getPages();
     }
 
-    public function getDirector(){
-        foreach ($this->structure as $worker){
-            if($worker->status=='рук'){
+    public function addWorker(Worker $worker)
+    {
+        $this->structure[] = $worker;
+    }
+
+    public function getDirector()
+    {
+        foreach ($this->structure as $worker) {
+            if ($worker->status) {//тоже метод
                 return $worker;
             }
         }
     }
 
 
-    public function getEngineersQuantity(){
-        $count=0;
-        foreach ($this->structure as $worker){
-            if (get_class($worker)=='Jobs\Engineer'){
+    public function getEngineersQuantity()
+    {
+        $count = 0;
+        foreach ($this->structure as $worker) {
+            if (get_class($worker) == 'Jobs\Engineer') {//instanceof
                 $count++;
             }
         }
         return $count;
     }
 
-    public function getManagerQuantity(){
-        $count=0;
-        foreach ($this->structure as $worker){
-            if (get_class($worker)=='Jobs\Manager' and ($worker->getRank()==1 or $worker->getRank()==2)){
+    public function getManagerQuantity()
+    {//вынести
+        $count = 0;
+        foreach ($this->structure as $worker) {
+            if (get_class($worker) == 'Jobs\Manager' and ($worker->getRank() == 1 or $worker->getRank() == 2)) {//instanceof
                 $count++;
             }
         }
