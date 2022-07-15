@@ -27,11 +27,7 @@ abstract class Worker
 
     public function isLeader()
     {
-        if ($this->isLeader) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->isLeader;
     }
 
     public function setRank(int $rank)
