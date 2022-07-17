@@ -2,6 +2,8 @@
 
 namespace Crisis;
 
+use Jobs\Analyst;
+
 class SecondMethod
 {
 
@@ -12,10 +14,10 @@ class SecondMethod
     {
         foreach ($this->structure as $department){
             $head=$department->getDirector();
-            if (get_class($head)!='Jobs\Analyst'){
+            if (!($head instanceof Analyst)){
                 $department->unsetDirector();
                 foreach ($department->structure as $worker){
-                    if (get_class($worker)=='Jobs\Analyst') {
+                    if ($worker instanceof Analyst) {
                         $head = $worker;
                         if ($worker->getRank() > $head->getRank()) {
                             $head = $worker;

@@ -2,6 +2,8 @@
 
 namespace Crisis;
 
+use Jobs\Engineer;
+
 class FirstMethod
 {
     public function __construct(private array $structure){
@@ -18,7 +20,7 @@ class FirstMethod
                 if ($dismissed==$count){
                     break;
                 }
-                if (get_class($worker)=='Jobs\Engineer' and $worker->isLeader!='рук'){
+                if (($worker instanceof Engineer) and (!$worker->isLeader())){
                     unset($dep[array_search($worker,$dep)]);
                     $dismissed++;
                 }

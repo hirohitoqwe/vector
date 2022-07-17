@@ -9,7 +9,7 @@ abstract class Worker
 
     protected $pages;
 
-    public function __construct(protected int $rank = 1, public bool $isLeader = false)//по умолчанию работник не глава департамента
+    public function __construct(protected int $rank = 1, protected bool $isLeader = false)//по умолчанию работник не глава департамента
     {
         $this->rankChangeIncome();
         $this->statusChangeIncome();
