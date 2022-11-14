@@ -2,6 +2,7 @@
 
 namespace Unit;
 
+use Jobs\Engineer;
 use Jobs\Worker;
 use Jobs\Analyst;
 use Jobs\Manager;
@@ -13,7 +14,7 @@ class EmployeeTest extends TestCase
     /**
      * @dataProvider testRankProvider
      */
-    public function testRank(int $rank, Worker $worker)
+    public function testRank(Worker $worker, int $rank)
     {
         $this->assertEquals($rank, $worker->getRank());
     }
@@ -45,24 +46,27 @@ class EmployeeTest extends TestCase
     public function testRankProvider()
     {
         return [
-            [],
-            []
+            [new Manager(), 1],
+            [new Manager(2), 2],
+            [new Manager(3), 3]
         ];
     }
 
     public function testCoffeeProvider()
     {
         return [
-            [],
-            []
+            [new Manager(), 20],
+            [new Engineer(), 5],
+            [new Analyst(), 50]
         ];
     }
 
     public function testPagesProvider()
     {
         return [
-            [],
-            []
+            [new Manager(), 200],
+            [new Engineer(), 50],
+            [new Analyst(), 5]
         ];
     }
 
