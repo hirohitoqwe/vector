@@ -1,18 +1,17 @@
 <?php
 
-namespace Unit;
+namespace Unit_Test;
 
 use Jobs\Engineer;
 use Jobs\Worker;
 use Jobs\Analyst;
 use Jobs\Manager;
-use Jobs\MarketingSpecialist;
 use PHPUnit\Framework\TestCase;
 
 class EmployeeTest extends TestCase
 {
     /**
-     * @dataProvider testRankProvider
+     * @dataProvider RankProvider
      */
     public function testRank(Worker $worker, int $rank)
     {
@@ -20,7 +19,7 @@ class EmployeeTest extends TestCase
     }
 
     /**
-     * @dataProvider testCoffeeProvider
+     * @dataProvider CoffeeProvider
      */
     public function testGetCoffee(Worker $worker, int $coffee)
     {
@@ -28,14 +27,14 @@ class EmployeeTest extends TestCase
     }
 
     /**
-     * @dataProvider testPagesProvider
+     * @dataProvider PagesProvider
      */
     public function testPages(Worker $worker, int $pages)
     {
         $this->assertEquals($pages, $worker->getPages());
     }
 
-    public function testRemoveLeader()
+    public function testSetLeader()
     {
         $newWorker = new Manager();
         $this->assertFalse($newWorker->isLeader());
@@ -43,7 +42,29 @@ class EmployeeTest extends TestCase
         $this->assertTrue($newWorker->isLeader());
     }
 
-    public function testRankProvider()
+    public function testRemove2()
+    {
+        $worker = new Manager();
+        $this->assertInstanceOf(Manager::class, $worker->removeLeader());
+    }
+
+    public function testSetRank()
+    {
+        $worker = new Manager();
+        $worker->setRank(2);
+        $this->assertEquals(2, $worker->getRank());
+    }
+
+
+    public function testLeaderRemove()
+    {
+        $worker = new Manager(isLeader: true);
+        $this->assertTrue($worker->isLeader());
+        $worker->removeLeader();
+        $this->assertFalse($worker->isLeader());
+    }
+
+    public function RankProvider(): array
     {
         return [
             [new Manager(), 1],
@@ -52,7 +73,7 @@ class EmployeeTest extends TestCase
         ];
     }
 
-    public function testCoffeeProvider()
+    public function CoffeeProvider(): array
     {
         return [
             [new Manager(), 20],
@@ -61,7 +82,7 @@ class EmployeeTest extends TestCase
         ];
     }
 
-    public function testPagesProvider()
+    public function PagesProvider(): array
     {
         return [
             [new Manager(), 200],

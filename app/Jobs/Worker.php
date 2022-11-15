@@ -23,6 +23,7 @@ abstract class Worker
     public function removeLeader()
     {
         $this->isLeader = false;
+        return $this;
     }
 
     public function isLeader()
