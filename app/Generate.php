@@ -77,8 +77,6 @@ class Generate//генерация департаментов с рабочим�
         $ruk = new MarketingSpecialist(3, true);
 
         $dep->addWorker($ruk);
-
-
     }
 
     public function generateLogisticsDep(Department $dep)//Логистики

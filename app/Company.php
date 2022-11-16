@@ -1,10 +1,13 @@
 <?php
 
 namespace App;
+
 use App\Department;
+
 class Company
 {
     private $departments = [];
+
     /*
     public function generateDepartments()
     {//набор сотрудников в департаменты и сложение их в компанию
@@ -28,34 +31,43 @@ class Company
     */
     public function takeDepartments(array $departments)
     {
-        $this->departments=$departments;
+        $this->departments = $departments;
+    }
+
+    public function addDepartment(Department $dep)
+    {
+        array_push($this->departments,$dep);
     }
 
     public function getTotalCountWorkers()//and other all and delete filter.php
     {
-        $employees=0;
-        foreach ($this->departments as $department){
-            $employees+=$department->getCountWorkers();
+        $employees = 0;
+        foreach ($this->departments as $department) {
+            $employees += $department->getCountWorkers();
         }
         return $employees;
     }
 
+    public function getCountOfDepartments()
+    {
+        return count($this->departments);
+    }
+
     public function getTotalExpenses()//and other all and delete filter.php
     {
-        $expenses=0;
-        foreach ($this->departments as $department){
-            $expenses+=$department->getExpenses();
+        $expenses = 0;
+        foreach ($this->departments as $department) {
+            $expenses += $department->getExpenses();
         }
         return $expenses;
     }
 
 
-
     public function getTotalExpenditureCoffee()//and other all and delete filter.php
     {
-        $expenditureCoffee=0;
-        foreach ($this->departments as $department){
-            $expenditureCoffee+=$department->getCoffee();
+        $expenditureCoffee = 0;
+        foreach ($this->departments as $department) {
+            $expenditureCoffee += $department->getCoffee();
         }
 
         return $expenditureCoffee;
@@ -63,18 +75,18 @@ class Company
 
     public function getTotalPages()//and other all and delete filter.php
     {
-        $pages=0;
-        foreach ($this->departments as $department){
-            $pages+=$department->getPages();
+        $pages = 0;
+        foreach ($this->departments as $department) {
+            $pages += $department->getPages();
         }
         return $pages;
     }
 
     public function getTotalAverageExpensesPerPage()//and other all and delete filter.php
     {
-        $averagePages=0;
-        foreach ($this->departments as $department){
-            $averagePages+=round($department->getAverageExpensesPerPage());
+        $averagePages = 0;
+        foreach ($this->departments as $department) {
+            $averagePages += round($department->getAverageExpensesPerPage());
         }
         return $averagePages;
     }

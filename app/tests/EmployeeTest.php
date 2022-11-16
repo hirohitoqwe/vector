@@ -1,6 +1,6 @@
 <?php
 
-namespace Unit_Test;
+namespace App\tests;
 
 use Jobs\Engineer;
 use Jobs\Worker;
